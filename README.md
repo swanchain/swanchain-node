@@ -47,7 +47,7 @@ openssl rand -hex 32 > jwt.txt
 cp /root/op-geth/jwt.txt /root/op-node/jwt.txt
 ```
 
-## 7. Create Geth SystemD Service
+## 5. Create Geth SystemD Service
 
 Create a new systemd service file for Geth:
 
@@ -102,7 +102,7 @@ WantedBy=multi-user.target
 
 Save and close the file.
 
-## 8. Create OP-Node SystemD Service
+## 6. Create OP-Node SystemD Service
 
 First, set up the environment variables:
 
@@ -165,7 +165,7 @@ WantedBy=multi-user.target
 
 Save and close the file.
 
-## 9. Enable and Start Services
+## 7. Enable and Start Services
 
 After creating the service files, follow these steps:
 
@@ -202,7 +202,7 @@ Replace `[service-name]` with either `geth-swanchain.service` or `op-node-swanch
 
 This setup will run both Geth and OP-Node as system services, making them easier to manage and ensuring they start automatically on system boot.
 
-## 10. Monitoring and Maintenance
+## 8. Monitoring and Maintenance
 
 To monitor the node's performance and sync status:
 
@@ -227,7 +227,7 @@ To monitor the node's performance and sync status:
 
 Remember to keep your system updated and monitor for any announcements from the SwanChain team regarding updates or maintenance requirements.
 
-## 11. Troubleshooting
+## 9. Troubleshooting
 
 ### Q1: How do I change the RPC service port?
 
