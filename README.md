@@ -135,6 +135,7 @@ User=root
 WorkingDirectory=/root/op-node
 EnvironmentFile=/etc/environment
 ExecStart=/usr/bin/op-node \
+    --http.port=8545 \
     --override.ecotone=1718640216 \
     --override.delta=1718640216 \
     --override.canyon=1718640216 \
