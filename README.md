@@ -200,3 +200,143 @@ You can now manage the services using the following commands:
 Replace `[service-name]` with either `geth-swanchain.service` or `op-node-swanchain.service` as needed.
 
 This setup will run both Geth and OP-Node as system services, making them easier to manage and ensuring they start automatically on system boot.
+
+## 9. Monitoring and Maintenance
+
+To monitor the node's performance and sync status:
+
+1. Check Geth logs:
+   ```bash
+   sudo tail -f /root/op-geth/geth.log
+   ```
+
+2. Check OP-Node logs:
+   ```bash
+   sudo tail -f /root/op-node/node.log
+   ```
+
+3. To check the sync status, you can use the Geth console:
+   ```bash
+   geth attach /root/op-geth/datadir/geth.ipc
+   ```
+   Then in the Geth console:
+   ```javascript
+   eth.syncing
+   ```
+
+Remember to keep your system updated and monitor for any announcements from the SwanChain team regarding updates or maintenance requirements.
+
+## 10. Troubleshooting
+
+### Q1: How do I change the RPC service port?
+
+A1: If you need to modify the RPC service port, you should change the port number in the Geth service configuration. The default port is 8545.
+
+To change the RPC port:
+
+1. Edit the Geth service file:
+   ```bash
+   sudo vim /etc/systemd/system/geth-swanchain.service
+   ```
+
+2. In the `ExecStart` section, find the `--http.port` flag (if it exists) or add it if it's not present. Set it to your desired port number. For example:
+   ```
+   --http.port=8545
+   ```
+
+3. Save the file and exit the editor.
+
+4. Reload the systemd manager configuration:
+   ```bash
+   sudo systemctl daemon-reload
+   ```
+
+5. Restart the Geth service:
+   ```bash
+   sudo systemctl restart geth-swanchain.service
+   ```
+
+Remember that if you change the RPC port, you may need to update any applications or services that connect to your node to use the new port number.
+
+### Q2: What should I do if the node is not syncing?
+
+A2: If your node is not syncing, try the following steps:
+
+1. Check the Geth and OP-Node logs for any error messages:
+   ```bash
+   sudo journalctl -u geth-swanchain -n 100
+   sudo journalctl -u op-node-swanchain -n 100
+   ```
+
+2. Ensure that your system clock is accurate:
+   ```bash
+   sudo timedatectl status
+   ```
+   If it's not synchronized, you may need to install and configure NTP.
+
+3. Verify that your firewall is not blocking the required ports (30303 for P2P, 8545 for RPC, etc.).
+
+4. Check your internet connection and ensure you have enough bandwidth.
+
+5. If problems persist, try restarting both services:
+   ```bash
+   sudo systemctl restart geth-swanchain.service
+   sudo systemctl restart op-node-swanchain.service
+   ```
+
+If you're still experiencing issues after trying these steps, consider reaching out to the SwanChain community or support channels for further assistance.
+
+### Q3: How can I view the full logs for Geth and OP-Node?
+
+A3: Since we've configured the services to write logs to files, you can view them using the following commands:
+
+For Geth logs:
+```bash
+sudo less /root/op-geth/geth.log
+```
+
+For OP-Node logs:
+```bash
+sudo less /root/op-node/node.log
+```
+
+Use the arrow keys to navigate through the log file. Press 'q' to exit.
+
+If you want to follow the logs in real-time, you can use the `tail` command with the `-f` option:
+
+For Geth:
+```bash
+sudo tail -f /root/op-geth/geth.log
+```
+
+For OP-Node:
+```bash
+sudo tail -f /root/op-node/node.log
+```
+
+Press Ctrl+C to stop following the logs.
+
+If you prefer to use `journalctl` for log viewing, you can modify the service files to use standard output instead of writing to files. To do this:
+
+1. Edit the service files:
+   ```bash
+   sudo vim /etc/systemd/system/geth-swanchain.service
+   sudo vim /etc/systemd/system/op-node-swanchain.service
+   ```
+
+2. Remove or comment out the `StandardOutput` and `StandardError` lines in both files.
+
+3. Save the files and exit the editor.
+
+4. Reload the systemd manager and restart the services:
+   ```bash
+   sudo systemctl daemon-reload
+   sudo systemctl restart geth-swanchain.service
+   sudo systemctl restart op-node-swanchain.service
+   ```
+
+After making these changes, you can use `journalctl` to view the logs:
+```bash
+sudo journalctl -u geth-swanchain -f
+sudo journalctl -u op-node-swanchain -f
+```
