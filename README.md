@@ -201,7 +201,7 @@ Replace `[service-name]` with either `geth-swanchain.service` or `op-node-swanch
 
 This setup will run both Geth and OP-Node as system services, making them easier to manage and ensuring they start automatically on system boot.
 
-## 9. Monitoring and Maintenance
+## 10. Monitoring and Maintenance
 
 To monitor the node's performance and sync status:
 
@@ -226,7 +226,7 @@ To monitor the node's performance and sync status:
 
 Remember to keep your system updated and monitor for any announcements from the SwanChain team regarding updates or maintenance requirements.
 
-## 10. Troubleshooting
+## 11. Troubleshooting
 
 ### Q1: How do I change the RPC service port?
 
