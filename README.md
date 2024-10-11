@@ -340,3 +340,31 @@ After making these changes, you can use `journalctl` to view the logs:
 sudo journalctl -u geth-swanchain -f
 sudo journalctl -u op-node-swanchain -f
 ```
+
+### Q4: sequencerhttp is not working
+
+A4: If you're experiencing issues with the sequencer HTTP, you should first check if your machine can properly connect to the sequencer URL. You can do this by running the following curl command:
+
+```bash
+curl --location 'https://sequencer-mainnet.swanchain.io' \
+--header 'Content-Type: application/json' \
+--data '{
+	"jsonrpc":"2.0",
+	"method":"eth_blockNumber",
+	"params":[],
+	"id":83
+}'
+```
+
+This command sends a request to get the latest block number from the sequencer. If it's working correctly, you should receive a JSON response containing the latest block number.
+
+If you receive a proper response:
+1. The sequencer is working, and the issue might be with your local configuration.
+2. Double-check your Geth service configuration to ensure the `--rollup.sequencerhttp` flag is set correctly.
+
+If you don't receive a response or get an error:
+1. There might be network connectivity issues. Check your internet connection.
+2. The sequencer might be temporarily down. Wait for a while and try again.
+3. There could be firewall issues blocking the connection. Ensure your firewall allows outgoing connections to the sequencer URL.
+
+If the problem persists after confirming the sequencer is accessible and your configuration is correct, you may need to reach out to the SwanChain support team for further assistance.
