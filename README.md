@@ -90,7 +90,7 @@ ExecStart=/usr/bin/geth \
     --authrpc.port=8551 \
     --authrpc.jwtsecret=./jwt.txt \
     --rollup.disabletxpoolgossip=true \
-    --rollup.sequencerhttp=https://sequencer-mainnet.swanchain.io
+    --rollup.sequencerhttp=https://sequencer-mainnet.swanchain.org
 Restart=always
 RestartSec=5
 StandardOutput=append:/root/op-geth/geth.log
@@ -346,7 +346,7 @@ sudo journalctl -u op-node-swanchain -f
 A4: If you're experiencing issues with the sequencer HTTP, you should first check if your machine can properly connect to the sequencer URL. You can do this by running the following curl command:
 
 ```bash
-curl --location 'https://sequencer-mainnet.swanchain.io' \
+curl --location 'https://sequencer-mainnet.swanchain.org' \
 --header 'Content-Type: application/json' \
 --data '{
 	"jsonrpc":"2.0",
