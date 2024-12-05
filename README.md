@@ -70,7 +70,7 @@ ExecStart=/usr/bin/geth \
     --override.ecotone=1718640216 \
     --override.cancun=1718640216 \
     --override.canyon=1718640216 \
-    --bootnodes 'enode://ed760daf5639d8f635d77e608eff8e9eb54d8d92be8c097654bc7727cdc0e7092017c3cd8e5af6677d11e26e9067ccbd4ddcd6285bf17485c4871e15925666b4@38.80.81.43:30303,enode://e1af88d816ab647479639dc70e2850d2c03bd88093a75c154e5b9a7f216e6d82b4591010ef0f343ed646cf7c4528014ddbb5575fe37ba2555f3fce9389913198@38.80.81.42:30303,enode://c69b87db28ff086699a7ad036a3e577ae86d5a3a9abaa45ca3f7a7980015c31ab828043b13f217c0fc7159eebe126c8a6d21f6c120b7a34e7d51a5f86fcd6891@38.80.81.44:30303' \
+    --bootnodes 'enode://4702ca733be9f94fc15069df547859b9b134f42f19a12d81bbd5122cbdef5287f08b98824a6dc7c4c26a30f4a8325f6d6a13e8b94a89e248e20937dcd20095c5@38.80.81.43:30303,enode://e1af88d816ab647479639dc70e2850d2c03bd88093a75c154e5b9a7f216e6d82b4591010ef0f343ed646cf7c4528014ddbb5575fe37ba2555f3fce9389913198@38.80.81.42:30303,enode://c69b87db28ff086699a7ad036a3e577ae86d5a3a9abaa45ca3f7a7980015c31ab828043b13f217c0fc7159eebe126c8a6d21f6c120b7a34e7d51a5f86fcd6891@38.80.81.44:30303' \
     --datadir ./datadir \
     --http \
     --http.corsdomain="*" \
@@ -142,7 +142,7 @@ ExecStart=/usr/bin/op-node \
     --l2.jwt-secret=./jwt.txt \
     --verifier.l1-confs=4 \
     --rollup.config=./rollup.json \
-    --p2p.static=/ip4/38.80.81.43/tcp/9003/p2p/16Uiu2HAmCEL64AYE62ZWXLc3t3So3fLPAF6T6GLJ23PW26ddZK99,/ip4/38.80.81.42/tcp/9003/p2p/16Uiu2HAkzid7aQdxv8xnNou2rYgFjvNUqXQfs9FaH32ZJFVvzWxA,/ip4/38.80.81.44/tcp/9003/p2p/16Uiu2HAmRbSjKUDeYgKWx7AVPGdGXrRNKCvxbMMtz3WkpJXPNhz3 \
+    --p2p.static=/ip4/38.80.81.43/tcp/9003/p2p/16Uiu2HAmVPXXGXnTniyXPGmMj8eaC417BsJJ5nfY1pu21vB3XSJG,/ip4/38.80.81.42/tcp/9003/p2p/16Uiu2HAkzid7aQdxv8xnNou2rYgFjvNUqXQfs9FaH32ZJFVvzWxA,/ip4/38.80.81.44/tcp/9003/p2p/16Uiu2HAmRbSjKUDeYgKWx7AVPGdGXrRNKCvxbMMtz3WkpJXPNhz3 \
     --l1.trustrpc=true \
     --p2p.listen.ip=0.0.0.0 \
     --p2p.listen.tcp=9003 \
